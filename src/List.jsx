@@ -3,11 +3,11 @@ import { AppContext } from "./AppContext.js";
 import { TiDelete } from "react-icons/ti";
 
 export default function List() {
-  const { data } = useContext(AppContext);
+  const { expenses } = useContext(AppContext);
 
   return (
     <ul className="border rounded border-neutral-300 divide-neutral-300 divide-y *:p-3">
-      {data.expenses.map((item) => <ListItem key={item.id} item={item} />)}
+      {expenses.map((item) => <ListItem key={item.id} item={item} />)}
     </ul>
   )
 }

@@ -13,7 +13,7 @@ export default function AppProvider({ children }) {
   });
 
   return (
-    <AppContext.Provider value={{ data, setData }}>
+    <AppContext.Provider value={{ ...data, setData }}>
       {children}
     </AppContext.Provider>
   );
