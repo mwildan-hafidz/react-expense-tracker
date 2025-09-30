@@ -1,6 +1,6 @@
 import AppProvider from "./AppProvider.jsx";
 import Navbar from "./Navbar.jsx";
-import Box from "./Box.jsx";
+import Boxes from "./Boxes.jsx";
 import List from "./List.jsx";
 import Form from "./Form.jsx";
 
@@ -10,9 +10,7 @@ export default function App() {
       <Navbar />
 
       <div className="p-2 grid grid-rows-3 gap-2">
-        <Box text={"Budget"} value={500} variant={"gray"} />
-        <Box text={"Remaining"} value={300} variant={"green"} />
-        <Box text={"Spent"} value={200} variant={"blue"} />
+        <Boxes />
       </div>
 
       <div className="mt-5 p-2">
