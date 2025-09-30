@@ -7,15 +7,21 @@ export default function AppProvider({ children }) {
     switch (action.type) {
       case "addexpense":
         return {
-          ...data, expenses: [...data.expenses, {
+          ...data,
+          expenses: [...data.expenses, {
             id: getId(),
             content: action.content,
             cost: action.cost,
-          }]
+          }],
         }
 
-      default:
-        break;
+      case "deleteexpense":
+        return {
+          ...data,
+          expenses: data.expenses.filter((expense) => expense.id !== action.id),
+        }
+
+      default: throw Error("Unknown action.type: " + action.type);
     }
   }, {
     budget: 500,
