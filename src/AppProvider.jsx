@@ -15,6 +15,9 @@ export default function AppProvider({ children }) {
           }],
         }
 
+      case "updatebudget":
+        return { ...data, budget: action.budget };
+
       case "deleteexpense":
         return {
           ...data,

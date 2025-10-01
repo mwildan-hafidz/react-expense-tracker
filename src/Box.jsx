@@ -19,7 +19,7 @@ export default function Box({ text, value, variant }) {
   }
 
   return (
-    <div className={`${bg} ${color} p-4 rounded font-semibold grid grid-cols-3`}>
+    <div className={`${bg} ${color} p-4 rounded font-semibold grid grid-cols-5`}>
       <span className="col-span-2">{text}:</span>
       <span>${value}</span>
     </div>
