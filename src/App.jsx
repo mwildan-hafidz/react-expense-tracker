@@ -1,7 +1,7 @@
 import AppProvider from "./AppProvider.jsx";
 import Navbar from "./Navbar.jsx";
 import Boxes from "./Boxes.jsx";
-import List from "./List.jsx";
+import Expenses from "./Expenses.jsx";
 import Form from "./Form.jsx";
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
 
       <div className="mt-5 p-2">
         <h1 className="text-xl font-semibold mb-2">Expenses</h1>
-        <List />
+        <Expenses />
       </div>
 
       <div className="mt-5 p-2">
