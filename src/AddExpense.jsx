@@ -36,10 +36,10 @@ export default function AddExpense() {
   return (
     <>
       <button
-        className="bg-sky-500 px-2 py-1 rounded text-white font-semibold block mt-2 ml-auto"
+        className="bg-sky-500 px-2 py-1 rounded text-white font-semibold block"
         onClick={() => setIsModalActive(true)}
       >
-        Add Expense
+        Add
       </button>
 
       <Modal active={isModalActive} onClose={() => setIsModalActive(false)}>

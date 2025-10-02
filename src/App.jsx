@@ -13,10 +13,12 @@ export default function App() {
         <Statuses />
       </div>
 
-      <div className="mt-5 p-2">
-        <h1 className="text-xl font-semibold mb-2">Expenses</h1>
+      <div className="mt-3 p-2">
+        <div className="flex justify-between items-center mb-2">
+          <h1 className="text-xl font-semibold">Expenses</h1>
+          <AddExpense />
+        </div>
         <Expenses />
-        <AddExpense />
       </div>
     </AppProvider>
   );
