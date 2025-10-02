@@ -35,7 +35,7 @@ export default function Statuses() {
         <Status text={"Budget"} value={budget} variant={"gray"} />
         <div className="absolute right-2.5 inset-y-0 flex items-center">
           <button
-            className="bg-neutral-400 px-2 py-1 rounded font-semibold text-neutral-100"
+            className="px-2 py-1 border-2 border-neutral-400 rounded font-semibold text-neutral-500"
             onClick={() => setIsModalActive(true)}
           >
             Edit
