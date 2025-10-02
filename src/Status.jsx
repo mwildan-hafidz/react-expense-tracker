@@ -1,4 +1,4 @@
-export default function Box({ text, value, variant }) {
+export default function Status({ text, value, variant }) {
   let bg, color;
 
   switch (variant) {
