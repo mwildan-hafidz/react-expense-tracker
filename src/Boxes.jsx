@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "./AppContext.js";
 import Box from "./Box.jsx";
+import { GrFormClose } from "react-icons/gr"
 
 export default function Boxes() {
   const { budget, expenses, dispatch } = useContext(AppContext);
@@ -14,14 +15,15 @@ export default function Boxes() {
 
   useEffect(() => {
     if (isEditing) {
+      inputRef.current.value = budget;
       inputRef.current.select();
     }
-  }, [isEditing])
+  }, [isEditing, budget])
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (editValue) {
+    if (editValue.trim()) {
       dispatch({ type: "updatebudget", budget: parseFloat(editValue) });
       setIsEditing(false);
     }
@@ -45,7 +47,7 @@ export default function Boxes() {
       <Box text={"Spent"} value={spent} variant={"blue"} />
 
       {isEditing ? <div className="fixed inset-0 bg-black/30 flex justify-center items-center">
-        <div className="bg-white rounded p-5 shadow/25 w-3xs">
+        <div className="bg-white rounded p-5 shadow/25 w-3xs relative">
           <form onSubmit={handleSubmit}>
             <label htmlFor="cost-edit" className="font-semibold">Edit budget</label>
             <input
@@ -64,6 +66,12 @@ export default function Boxes() {
               Save
             </button>
           </form>
+          <button
+            className="absolute top-5 right-5 cursor-pointer hover:*:opacity-50"
+            onClick={() => setIsEditing(false)}
+          >
+            <GrFormClose />
+          </button>
         </div>
       </div> : null}
     </>
