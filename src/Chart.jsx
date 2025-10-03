@@ -7,17 +7,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Chart({ expenses, remaining }) {
   const sortedExpenses = expenses.toSorted((first, next) => first.category.localeCompare(next.category));
-
   const categories = [...new Set(sortedExpenses.map((exp) => exp.category))];
-  const totals = categories.map((ctg) => {
-    let totalCost = 0;
-    sortedExpenses.map((exp) => {
-      if (exp.category === ctg) {
-        totalCost += exp.cost;
-      }
-    });
-    return totalCost;
-  });
+
+  const totals = categories.map(
+    (ctg) => sortedExpenses.reduce(
+      (sum, exp) => exp.category === ctg ? sum + exp.cost : sum, 0
+    )
+  );
 
   const data = {
     labels: ["Remaining", ...categories.map((ctg) => capitalize(ctg))],
@@ -25,7 +21,7 @@ export default function Chart({ expenses, remaining }) {
       {
         label: "Total",
         data: [remaining, ...totals],
-        backgroundColor: "rgba(75, 192, 192, 0.5)",
+        backgroundColor: "#4dc9f6",
       },
     ],
   };
@@ -41,11 +37,10 @@ export default function Chart({ expenses, remaining }) {
           usePointStyle: true,
           pointStyle: "rect",
         },
-        onClick: () => { },
       },
       tooltip: {
         callbacks: {
-          label: (item) => `Total: $${item.formattedValue}`,
+          label: (item) => `${item.dataset.label}: $${item.formattedValue}`,
         }
       }
     },
