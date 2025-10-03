@@ -7,20 +7,24 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Chart({ expenses, remaining }) {
   const sortedExpenses = expenses.toSorted((first, next) => first.category.localeCompare(next.category));
-  const categories = [...new Set(sortedExpenses.map((exp) => exp.category))];
 
+  const categorizedExpenses = sortedExpenses.filter((exp) => exp.category !== "");
+  const otherExpenses = sortedExpenses.filter((exp) => exp.category === "");
+
+  const categories = [...new Set(categorizedExpenses.map((exp) => exp.category))];
   const totals = categories.map(
-    (ctg) => sortedExpenses.reduce(
+    (ctg) => categorizedExpenses.reduce(
       (sum, exp) => exp.category === ctg ? sum + exp.cost : sum, 0
     )
   );
+  const otherTotals = otherExpenses.reduce((sum, exp) => sum + exp.cost, 0);
 
   const data = {
-    labels: ["Remaining", ...categories.map((ctg) => capitalize(ctg))],
+    labels: ["Remaining", ...categories.map((ctg) => capitalize(ctg)), "Other"],
     datasets: [
       {
         label: "Total",
-        data: [remaining, ...totals],
+        data: [remaining, ...totals, otherTotals],
         backgroundColor: "#4dc9f6",
       },
     ],

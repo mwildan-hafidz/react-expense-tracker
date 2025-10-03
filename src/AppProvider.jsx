@@ -28,7 +28,7 @@ export default function AppProvider({ children }) {
       default: throw Error("Unknown action.type: " + action.type);
     }
   }, {
-    budget: 2000,
+    budget: 5000,
     expenses: [
       { id: getId(), content: "Shopping", cost: 40, category: "personal" },
       { id: getId(), content: "Travel", cost: 300, category: "leisure" },
@@ -50,7 +50,11 @@ export default function AppProvider({ children }) {
       { id: getId(), content: "Taxi", cost: 25, category: "transport" },
       { id: getId(), content: "Concert Ticket", cost: 150, category: "entertainment" },
       { id: getId(), content: "Gift", cost: 80, category: "personal" },
-
+      { id: getId(), content: "Laptop Repair", cost: 250, category: "" },
+      { id: getId(), content: "Furniture", cost: 400, category: "" },
+      { id: getId(), content: "Vacation Package", cost: 1200, category: "" },
+      { id: getId(), content: "Pet Supplies", cost: 60, category: "" },
+      { id: getId(), content: "Charity Donation", cost: 100, category: "" },
     ],
   });
 
