@@ -13,9 +13,10 @@ export default function ListItem({ item }) {
   }
 
   return (
-    <li className="flex justify-between items-center">
-      <span>{item.content}</span>
-      <div className="flex items-center gap-1">
+    <li className="grid grid-cols-4 items-center">
+      <span className="col-span-2">{item.content}</span>
+      <span className="text-sm text-neutral-400 overflow-ellipsis overflow-hidden">{capitalize(item.category)}</span>
+      <div className="flex items-center gap-1 justify-self-end">
         <span
           className="bg-sky-500 text-white px-2 py-0.5 rounded-full text-xs font-bold"
         >
@@ -29,4 +30,8 @@ export default function ListItem({ item }) {
       </div>
     </li>
   );
+}
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
