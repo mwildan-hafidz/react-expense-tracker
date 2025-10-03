@@ -12,7 +12,7 @@ export default function AppProvider({ children }) {
             id: getId(),
             content: action.content,
             cost: action.cost,
-            category: action.category,
+            category: action.category.toLowerCase(),
           }],
         }
 
