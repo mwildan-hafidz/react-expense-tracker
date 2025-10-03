@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "./AppContext.js";
 import { TiDelete } from "react-icons/ti";
+import { capitalize } from "./utils.js";
 
 export default function ListItem({ item }) {
   const { dispatch } = useContext(AppContext);
@@ -30,8 +31,4 @@ export default function ListItem({ item }) {
       </div>
     </li>
   );
-}
-
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 }

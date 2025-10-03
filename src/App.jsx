@@ -9,7 +9,7 @@ export default function App() {
     <AppProvider>
       <Navbar />
 
-      <div className="p-2 grid grid-rows-3 gap-2">
+      <div className="p-2">
         <Statuses />
       </div>
 
