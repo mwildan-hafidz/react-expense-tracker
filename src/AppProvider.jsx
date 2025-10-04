@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useMemo, useReducer } from "react";
 import { v6 as getId } from "uuid";
 import { AppContext } from "./AppContext.js";
 
@@ -58,8 +58,18 @@ export default function AppProvider({ children }) {
     ],
   });
 
+  const spent = useMemo(
+    () => data.expenses.reduce((total, expense) => total + expense.cost, 0),
+    [data.expenses]
+  );
+
+  const remaining = useMemo(
+    () => data.budget - spent,
+    [data.budget, spent]
+  );
+
   return (
-    <AppContext.Provider value={{ ...data, dispatch }}>
+    <AppContext.Provider value={{ ...data, dispatch, spent, remaining }}>
       {children}
     </AppContext.Provider>
   );

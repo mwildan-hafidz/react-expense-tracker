@@ -1,5 +1,6 @@
 import AppProvider from "./AppProvider.jsx";
 import Navbar from "./Navbar.jsx";
+import Chart from "./Chart.jsx";
 import Statuses from "./Statuses.jsx";
 import Expenses from "./Expenses.jsx";
 import AddExpense from "./AddExpense.jsx";
@@ -10,7 +11,12 @@ export default function App() {
       <Navbar />
 
       <div className="p-2">
-        <Statuses />
+        <div className="grid grid-rows-3 sm:grid-cols-2 gap-2">
+          <div className="hidden sm:block justify-center row-span-3 border border-neutral-300 rounded p-2">
+            <Chart />
+          </div>
+          <Statuses />
+        </div>
       </div>
 
       <div className="mt-3 p-2">

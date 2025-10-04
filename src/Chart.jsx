@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AppContext } from "./AppContext.js";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
@@ -5,7 +7,9 @@ import { capitalize, stringToHSL } from "./utils.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function Chart({ expenses, remaining }) {
+export default function Chart() {
+  const { expenses, remaining } = useContext(AppContext);
+
   const { categorized, uncategorized } = expenses.reduce(
     (acc, exp) => {
       if (exp.category === "") acc.uncategorized.push(exp);
@@ -25,6 +29,7 @@ export default function Chart({ expenses, remaining }) {
 
   const categories = Object.keys(totalsByCategory).sort();
   const totals = categories.map((ctg) => totalsByCategory[ctg]);
+  const uncategorizedTotals = uncategorizedExpenses.reduce((sum, exp) => sum + exp.cost, 0);
 
   const colors = categories.map(
     (ctg) => {
@@ -32,8 +37,6 @@ export default function Chart({ expenses, remaining }) {
       return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     }
   );
-
-  const uncategorizedTotals = uncategorizedExpenses.reduce((sum, exp) => sum + exp.cost, 0);
 
   const data = {
     labels: ["Remaining", ...categories.map((ctg) => capitalize(ctg)), "Other"],
@@ -65,7 +68,6 @@ export default function Chart({ expenses, remaining }) {
       }
     },
   };
-
 
   return <Doughnut data={data} options={options} />;
 }
