@@ -16,9 +16,15 @@ export default function Chart({ expenses, remaining }) {
   );
 
   const categorizedExpenses = categorized;
-  const otherExpenses = uncategorized;
+  const uncategorizedExpenses = uncategorized;
 
-  const categories = [...new Set(categorizedExpenses.map((exp) => exp.category))];
+  const totalsByCategory = categorizedExpenses.reduce((acc, exp) => {
+    acc[exp.category] = (acc[exp.category] || 0) + exp.cost;
+    return acc;
+  }, {});
+
+  const categories = Object.keys(totalsByCategory).sort();
+  const totals = categories.map((ctg) => totalsByCategory[ctg]);
 
   const colors = categories.map(
     (ctg) => {
@@ -27,12 +33,7 @@ export default function Chart({ expenses, remaining }) {
     }
   );
 
-  const totals = categories.map(
-    (ctg) => categorizedExpenses.reduce(
-      (sum, exp) => exp.category === ctg ? sum + exp.cost : sum, 0
-    )
-  );
-  const otherTotals = otherExpenses.reduce((sum, exp) => sum + exp.cost, 0);
+  const uncategorizedTotals = uncategorizedExpenses.reduce((sum, exp) => sum + exp.cost, 0);
 
   const data = {
     labels: ["Remaining", ...categories.map((ctg) => capitalize(ctg)), "Other"],
@@ -40,7 +41,7 @@ export default function Chart({ expenses, remaining }) {
       {
         label: "Total",
         backgroundColor: ["hsl(0, 0%, 15%)", ...colors, "hsl(0, 0%, 60%)"],
-        data: [remaining, ...totals, otherTotals],
+        data: [remaining, ...totals, uncategorizedTotals],
       },
     ],
   };
