@@ -44,7 +44,7 @@ export default function AddExpense() {
   return (
     <>
       <button
-        className="bg-sky-500 px-2 py-1 rounded text-white font-semibold block"
+        className="bg-sky-500 px-2 py-1 rounded text-white font-semibold block hover:bg-sky-600"
         onClick={() => setIsModalActive(true)}
       >
         Add
@@ -70,7 +70,7 @@ export default function AddExpense() {
             <input
               required
               type="number"
-              className="block w-full outline-0"
+              className="block w-full outline-0 col-span-2"
               placeholder="Cost"
               name="cost"
               autoComplete="off"
@@ -89,7 +89,7 @@ export default function AddExpense() {
           />
           <button
             type="submit"
-            className="block bg-sky-500 font-semibold text-white rounded px-2 py-1 ml-auto"
+            className="block bg-sky-500 font-semibold text-white rounded px-2 py-1 ml-auto hover:bg-sky-600"
           >
             Add
           </button>

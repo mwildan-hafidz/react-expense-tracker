@@ -23,11 +23,14 @@ export default function ListItem({ item }) {
         >
           ${item.cost}
         </span>
-        <TiDelete
-          size={"1.5rem"}
-          className="cursor-pointer hover:opacity-70"
+        <button
+          className="hover:*:opacity-70"
           onClick={handleClick}
-        />
+        >
+          <TiDelete
+            size={"1.5rem"}
+          />
+        </button>
       </div>
     </li>
   );

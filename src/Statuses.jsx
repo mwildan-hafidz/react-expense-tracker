@@ -54,7 +54,7 @@ export default function Statuses() {
           />
           <button
             type="submit"
-            className="block bg-sky-500 font-semibold text-white rounded px-2 py-1 ml-auto"
+            className="block bg-sky-500 font-semibold text-white rounded px-2 py-1 ml-auto hover:bg-sky-600"
           >
             Save
           </button>

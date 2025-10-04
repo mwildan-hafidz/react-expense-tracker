@@ -33,7 +33,7 @@ export default function List({ expenses }) {
         <span className="px-1 text-sm text-neutral-500">Page: {page + 1}</span>
         <button
           className="ml-auto px-2 py-1 border border-neutral-300 rounded font-semibold text-neutral-600 
-          disabled:bg-neutral-200"
+          disabled:bg-neutral-200 disabled:text-neutral-400 hover:bg-neutral-200"
           onClick={() => setPage((prev) => prev - 1)}
           disabled={isFirstPage}
         >
@@ -41,7 +41,7 @@ export default function List({ expenses }) {
         </button>
         <button
           className="px-2 py-1 border border-neutral-300 rounded font-semibold text-neutral-600 
-          disabled:bg-neutral-200"
+          disabled:bg-neutral-200 disabled:text-neutral-400 hover:bg-neutral-200"
           onClick={() => setPage((prev) => prev + 1)}
           disabled={isLastPage}
         >

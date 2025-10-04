@@ -25,7 +25,17 @@ export default function Status({ text, value, variant, editable, onEditClick }) 
       <span>{text}</span>
       <div className="flex gap-2 justify-start sm:justify-between items-center">
         <span>${value}</span>
-        {editable ? <button className="shrink-0 rounded" onClick={onEditClick}><TiEdit size={"1.5rem"} /></button> : null}
+        {
+          editable
+            ? <button
+              className="shrink-0 rounded hover:bg-black/15"
+              onClick={onEditClick}
+            >
+              <TiEdit size={"1.5rem"}
+              />
+            </button>
+            : null
+        }
       </div>
     </div>
   )
