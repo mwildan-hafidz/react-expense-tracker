@@ -6,10 +6,17 @@ import { capitalize, stringToHSL } from "./utils.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Chart({ expenses, remaining }) {
-  const sortedExpenses = expenses.toSorted((first, next) => first.category.localeCompare(next.category));
+  const { categorized, uncategorized } = expenses.reduce(
+    (acc, exp) => {
+      if (exp.category === "") acc.uncategorized.push(exp);
+      else acc.categorized.push(exp);
+      return acc;
+    },
+    { categorized: [], uncategorized: [] }
+  );
 
-  const categorizedExpenses = sortedExpenses.filter((exp) => exp.category !== "");
-  const otherExpenses = sortedExpenses.filter((exp) => exp.category === "");
+  const categorizedExpenses = categorized;
+  const otherExpenses = uncategorized;
 
   const categories = [...new Set(categorizedExpenses.map((exp) => exp.category))];
 
