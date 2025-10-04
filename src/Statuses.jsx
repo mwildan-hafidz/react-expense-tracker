@@ -29,17 +29,13 @@ export default function Statuses() {
 
   return (
     <>
-      <div className="relative">
-        <Status text={"Budget"} value={budget} variant={"gray"} />
-        <div className="absolute right-2.5 inset-y-0 flex items-center">
-          <button
-            className="px-2 py-1 border-2 border-neutral-400 rounded font-semibold text-neutral-500"
-            onClick={() => setIsModalActive(true)}
-          >
-            Edit
-          </button>
-        </div>
-      </div>
+      <Status
+        text={"Budget"}
+        value={budget}
+        variant={"gray"}
+        editable={true}
+        onEditClick={() => setIsModalActive(true)}
+      />
       <Status text={"Remaining"} value={remaining} variant={"green"} />
       <Status text={"Spent"} value={spent} variant={"blue"} />
 
