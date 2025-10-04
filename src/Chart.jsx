@@ -38,13 +38,21 @@ export default function Chart() {
     }
   );
 
+  const dataLabels = ["Remaining", ...categories.map((ctg) => capitalize(ctg))];
+  const datasetsData = [remaining, ...totals];
+
+  if (uncategorizedExpenses.length !== 0) {
+    dataLabels.push("Other");
+    datasetsData.push(uncategorizedTotals);
+  }
+
   const data = {
-    labels: ["Remaining", ...categories.map((ctg) => capitalize(ctg)), "Other"],
+    labels: dataLabels,
     datasets: [
       {
         label: "Total",
         backgroundColor: ["hsl(0, 0%, 15%)", ...colors, "hsl(0, 0%, 60%)"],
-        data: [remaining, ...totals, uncategorizedTotals],
+        data: datasetsData,
       },
     ],
   };
