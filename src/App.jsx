@@ -1,6 +1,6 @@
 import AppProvider from "./AppProvider.jsx";
 import Chart from "./Chart.jsx";
-import Statuses from "./Statuses.jsx";
+import Status from "./Status.jsx";
 import Expenses from "./Expenses.jsx";
 import AddExpense from "./AddExpense.jsx";
 
@@ -16,7 +16,7 @@ export default function App() {
           <div className="justify-center col-span-3 sm:col-span-1 sm:row-span-3 max-h-48 sm:max-h-full border border-neutral-300 rounded p-2">
             <Chart />
           </div>
-          <Statuses />
+          <Status />
         </div>
       </div>
 

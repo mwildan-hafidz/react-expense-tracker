@@ -6,11 +6,11 @@ export default function Expenses() {
   const { expenses } = useContext(AppContext);
 
   const [search, setSearch] = useState("");
-  const [visibleExpenses, setVisibleExpenses] = useState(expenses);
+  const [resultExpenses, setResultExpenses] = useState(expenses);
 
   // Update visible expenses.
   useEffect(() => {
-    setVisibleExpenses(expenses);
+    setResultExpenses(expenses);
 
     if (expenses.length === 0) setSearch("");
   }, [expenses]);
@@ -19,10 +19,10 @@ export default function Expenses() {
   useEffect(() => {
     const s = search.trim().toLowerCase();
     if (s) {
-      setVisibleExpenses(expenses.filter((exp) => exp.content.toLowerCase().includes(s)));
+      setResultExpenses(expenses.filter((exp) => exp.content.toLowerCase().includes(s)));
     }
     else {
-      setVisibleExpenses(expenses);
+      setResultExpenses(expenses);
     }
   }, [search, expenses]);
 
@@ -39,7 +39,7 @@ export default function Expenses() {
         disabled={expenses.length === 0}
       />
 
-      <List expenses={visibleExpenses} />
+      <List items={resultExpenses} />
     </>
   )
 }

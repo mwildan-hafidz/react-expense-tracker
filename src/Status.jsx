@@ -1,42 +1,65 @@
-import { TiEdit } from "react-icons/ti"
+import { useContext, useEffect, useRef, useState } from "react";
+import { AppContext } from "./AppContext.js";
+import StatusItem from "./StatusItem.jsx";
+import Modal from "./Modal.jsx";
 
-export default function Status({ text, value, variant, editable, onEditClick }) {
-  let bg, color;
+export default function Status() {
+  const { budget, dispatch, spent, remaining } = useContext(AppContext);
 
-  switch (variant) {
-    case "gray":
-      [bg, color] = ["bg-neutral-200", "text-neutral-700"];
-      break;
+  const [isModalActive, setIsModalActive] = useState(false);
+  const [editValue, setEditValue] = useState(budget);
 
-    case "green":
-      [bg, color] = ["bg-green-100", "text-green-700"];
-      break;
+  const inputRef = useRef(null);
 
-    case "blue":
-      [bg, color] = ["bg-sky-200", "text-sky-700"];
-      break;
+  useEffect(() => {
+    if (isModalActive) {
+      inputRef.current.value = budget;
+      inputRef.current.select();
+    }
+  }, [isModalActive, budget])
 
-    default: throw new Error("Unknown variant: " + variant);
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
+    if (editValue.trim()) {
+      dispatch({ type: "updatebudget", budget: parseFloat(editValue) });
+      setIsModalActive(false);
+    }
   }
 
   return (
-    <div className={`${bg} ${color} px-2 py-4 sm:px-4 rounded font-semibold grid grid-cols-1 sm:grid-cols-2`}>
-      <span>{text}</span>
-      <div className="flex gap-2 justify-start sm:justify-between items-center">
-        <span>${value}</span>
-        {
-          editable
-            ? <button
-              className="shrink-0 rounded hover:bg-black/15"
-              onClick={onEditClick}
-            >
-              <TiEdit size={"1.5rem"}
-              />
-            </button>
-            : null
-        }
-      </div>
-    </div>
+    <>
+      <StatusItem
+        text={"Budget"}
+        value={budget}
+        variant={"gray"}
+        editable={true}
+        onEditClick={() => setIsModalActive(true)}
+      />
+      <StatusItem text={"Remaining"} value={remaining} variant={"green"} />
+      <StatusItem text={"Spent"} value={spent} variant={"blue"} />
+
+      <Modal active={isModalActive} onClose={() => setIsModalActive(false)}>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="cost-edit" className="font-semibold">Edit budget</label>
+          <input
+            type="number"
+            id="cost-edit"
+            className="block w-full outline-0 min-w-0 border rounded border-neutral-300 px-2 py-1 my-2"
+            placeholder="Budget"
+            value={editValue}
+            onChange={(event) => setEditValue(event.target.value)}
+            ref={inputRef}
+            autoComplete="off"
+          />
+          <button
+            type="submit"
+            className="block bg-sky-500 font-semibold text-white rounded px-2 py-1 ml-auto hover:bg-sky-600"
+          >
+            Save
+          </button>
+        </form>
+      </Modal>
+    </>
   )
 }
