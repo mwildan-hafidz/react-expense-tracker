@@ -1,16 +1,69 @@
-# React + Vite
+# React Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive **Expense Tracker Web App** built with **React**, **Tailwind CSS**, and **Chart.js**.  
+It helps users manage their finances by tracking income and expenses with clean visuals and intuitive controls.
 
-Currently, two official plugins are available:
+![App Screenshot](./screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live Demo:** [View on Vercel](https://react-expense-tracker-omega-nine.vercel.app/)
 
-## React Compiler
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Add and remove income or expense transactions  
+- Real-time balance, income, and expense tracking  
+- Interactive charts powered by Chart.js  
+- Persistent data storage using Local Storage  
+- Responsive and modern UI built with Tailwind CSS  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Tech Stack
+
+- [React](https://react.dev/)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [Chart.js](https://www.chartjs.org/)  
+- [Local Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)  
+
+
+## Installation & Setup
+
+Follow these steps to run the project locally:
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mwildan-hafidz/react-expense-tracker.git
+   ```
+
+2. **Navigate into the project directory**
+   ```bash
+   cd react-expense-tracker
+   ```
+
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and visit:
+   ```
+   http://localhost:5173
+   ```
+
+You should now see the **React Expense Tracker** app running locally.
+
+
+## Future Improvements
+
+- Edit existing transactions  
+- Filter transactions by date or category  
+- Optional backend integration for multi-device sync  
+
+
+## License
+
+This project is licensed under the **MIT License** — feel free to use and modify it for your own projects.
