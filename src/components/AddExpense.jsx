@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useContext } from "react";
-import { AppContext } from "./AppContext.js";
+import { AppContext } from "./App";
 import Modal from "./Modal.jsx";
 
 export default function AddExpense() {

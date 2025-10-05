@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { AppContext } from "./AppContext.js";
-import List from "./List.jsx";
+import { AppContext } from "./App";
+import List from "./List";
 
 export default function Expenses() {
   const { expenses } = useContext(AppContext);

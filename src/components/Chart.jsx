@@ -1,9 +1,9 @@
 import { useContext, useMemo } from "react";
-import { AppContext } from "./AppContext.js";
+import { AppContext } from "./App";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
-import { capitalize, stringToHSL } from "./utils.js";
+import { capitalize, stringToHSL } from "../utils.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

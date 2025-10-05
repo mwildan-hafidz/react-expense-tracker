@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { AppContext } from "./AppContext.js";
+import { AppContext } from "../App";
 import StatusItem from "./StatusItem.jsx";
-import Modal from "./Modal.jsx";
+import Modal from "../Modal.jsx";
 
 export default function Status() {
   const { budget, dispatch, spent, remaining } = useContext(AppContext);

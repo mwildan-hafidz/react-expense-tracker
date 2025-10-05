@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { AppContext } from "./AppContext.js";
+import { AppContext } from "../App";
 import { TiDelete } from "react-icons/ti";
-import { capitalize } from "./utils.js";
+import { capitalize } from "../../utils.js";
 
 export default function ListItem({ item }) {
   const { dispatch } = useContext(AppContext);

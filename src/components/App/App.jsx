@@ -1,8 +1,8 @@
 import AppProvider from "./AppProvider.jsx";
-import Chart from "./Chart.jsx";
-import Status from "./Status.jsx";
-import Expenses from "./Expenses.jsx";
-import AddExpense from "./AddExpense.jsx";
+import Chart from "../Chart.jsx";
+import Status from "../Status";
+import Expenses from "../Expenses.jsx";
+import AddExpense from "../AddExpense.jsx";
 
 export default function App() {
   return (
